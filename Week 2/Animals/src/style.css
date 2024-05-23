@@ -1,0 +1,89 @@
+* {
+  box-sizing: border-box;
+  color: #333;
+}
+
+body {
+  background-image: linear-gradient(
+      rgba(121, 129, 139, 0.5),
+      rgba(121, 129, 139, 0.5)
+    ),
+    url(https://img.freepik.com/premium-vector/seamless-colorful-pattern-with-dogs-paws-background-pet-shop-veterinary-clinic-pet-store-zoo-shelter-flat-style-design-vector-illustration_562639-773.jpg);
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 1rem;
+}
+img {
+  width: 100%;
+}
+
+.button {
+  background-color: #84af39;
+  text-decoration: none;
+  padding: 5px 25px;
+  color: white;
+  font-size: 18px;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.animals {
+  display: flex;
+  gap: 5rem;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+
+.animals .animal {
+  display: flex;
+  width: 250px;
+  flex-direction: column;
+  gap: 2rem;
+}
+.animals .animal img {
+  border-radius: 1rem;
+}
+
+.details {
+  display: flex;
+
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-top: 10rem;
+  padding: 15px;
+  margin-bottom: 25px;
+  border-radius: 6px;
+  background: #faeff0;
+  box-shadow: 0px 0px 12px #aaa, -0px -0px 12px #fff;
+}
+
+.button {
+  align-items: center;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 1rem;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
