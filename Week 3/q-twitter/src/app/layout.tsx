@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Sans_Arabic } from "next/font/google";
 import "./globals.css";
-import "@/assets/styles/style.css";
+// import "@/assets/styles/style.css";
 import { StoreProvider } from "./StoreProvider";
-const inter = Inter({ subsets: ["latin"] });
+import Notification from "@/containers/Notification";
+import "@/styles/core.scss";
+const rubik = Noto_Sans_Arabic({ subsets: ["arabic"] });
 
 export const metadata: Metadata = {
   title: "Q Twitter",
@@ -16,8 +18,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="fa" dir="rtl">
+      <body className={rubik.className}>
+        <Notification />
+
         <StoreProvider>{children}</StoreProvider>
       </body>
     </html>
