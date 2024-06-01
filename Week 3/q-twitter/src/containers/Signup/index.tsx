@@ -74,7 +74,7 @@ function Signup(props: MySignupProps): JSX.Element {
       <input type="submit" value={"ثبت نام"} />
       <p>
         حساب کاربری دارید؟
-        <Link href="/signin"> ورود</Link>
+        <Link href="/auth/signin"> ورود</Link>
       </p>
     </form>
   );
