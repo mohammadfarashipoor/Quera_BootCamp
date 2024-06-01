@@ -15,6 +15,7 @@ function Signup(props: MySignupProps): JSX.Element {
   return (
     <form className="auth__form" onSubmit={(e) => handlesignUp(e)}>
       <h2>ثبت نام</h2>
+      <hr />
       <Input
         type={"text"}
         error={formErrors["firstName"]}
