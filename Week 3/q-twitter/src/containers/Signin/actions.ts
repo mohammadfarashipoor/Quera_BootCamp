@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import Axios from "@/utils/axios";
-
+import routerHook from "@/utils/navigation";
 import {
   LOGIN_CHANGE,
   LOGIN_RESET,
@@ -63,7 +63,9 @@ export const login = () => {
 };
 export const signOut = () => {
   return (dispatch: Dispatch, getState: any) => {
+    "use client";
     localStorage.removeItem("token");
     toast.warning(`شما خارج شدید`);
+    routerHook().push("/login");
   };
 };

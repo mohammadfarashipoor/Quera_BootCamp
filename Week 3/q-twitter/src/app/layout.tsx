@@ -5,6 +5,7 @@ import "./globals.css";
 import { StoreProvider } from "./StoreProvider";
 import Notification from "@/containers/Notification";
 import "@/styles/core.scss";
+import RouterHook from "./RouterHook";
 const rubik = Noto_Sans_Arabic({ subsets: ["arabic"] });
 
 export const metadata: Metadata = {
@@ -21,8 +22,9 @@ export default function RootLayout({
     <html lang="fa" dir="rtl">
       <body className={rubik.className}>
         <Notification />
-
-        <StoreProvider>{children}</StoreProvider>
+        <StoreProvider>
+          <RouterHook>{children}</RouterHook>
+        </StoreProvider>
       </body>
     </html>
   );
