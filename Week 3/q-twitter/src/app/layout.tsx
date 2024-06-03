@@ -6,6 +6,8 @@ import { StoreProvider } from "./StoreProvider";
 import Notification from "@/containers/Notification";
 import "@/styles/core.scss";
 import RouterHook from "./RouterHook";
+import Menu from "@/views/Menu";
+import SidebarRight from "@/views/SideBarRight";
 const rubik = Noto_Sans_Arabic({ subsets: ["arabic"] });
 
 export const metadata: Metadata = {
@@ -23,7 +25,13 @@ export default function RootLayout({
       <body className={rubik.className}>
         <Notification />
         <StoreProvider>
-          <RouterHook>{children}</RouterHook>
+          <RouterHook>
+            <div className="layout flex justify-between">
+              <Menu />
+              {children}
+              <SidebarRight />
+            </div>
+          </RouterHook>
         </StoreProvider>
       </body>
     </html>

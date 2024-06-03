@@ -1,0 +1,137 @@
+.sidebar-left {
+  position: fixed;
+  color: $White;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid rgba(220, 220, 220, 0.175);
+  padding: 0.6em 2em;
+  background-color: #15202b;
+  z-index: 10;
+}
+.sidebar-left__link {
+  color: #ffffff;
+}
+.sidebar-left__link--tweet,
+.sidebar-left__link--twitter,
+.sidebar-left__link--bookmark,
+.sidebar-left__link--notification,
+.sidebar-left__link--list {
+  display: none;
+}
+.sidebar-left__card,
+.sidebar-left__modal {
+  display: none;
+}
+.sidebar-left__icon {
+  font-size: 1.6em;
+}
+.sidebar-left__text {
+  display: none;
+}
+.avatar__small {
+  width: 3em;
+  height: 3em;
+}
+.avatar {
+  background-color: #209bf0;
+  border-radius: 50%;
+}
+.avatar svg {
+  color: #ffffff;
+}
+.avatar__small svg {
+  font-size: 1.2em;
+}
+@media (min-width: 40em) {
+  .sidebar-left {
+    position: relative;
+    height: 100vh;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    border-left: 1px solid rgba(220, 220, 220, 0.175);
+    -webkit-box-flex: 1.1;
+    -ms-flex: 1.1;
+    flex: 1.1;
+    padding: 0.2em 4em 0 1em;
+  }
+  .sidebar-left__icon {
+    font-size: 1.7em;
+    margin: 0 0 0 0.8em;
+  }
+  .sidebar-left__text {
+    display: block;
+    font-size: 1.2em;
+    font-weight: 500;
+  }
+  .sidebar-left__card--info {
+    margin-right: 0.9em;
+  }
+  .sidebar-left__modal {
+    display: flex;
+    position: absolute;
+    z-index: 2;
+    width: 300px;
+    padding: 1em 0;
+    border-radius: 20px;
+    background-color: #15202b;
+    box-shadow: 0 0 10px rgba(220, 220, 220, 0.175);
+    bottom: 4em;
+    left: 1em;
+    visibility: hidden;
+    transition: 0.1s;
+  }
+
+  .sidebar-left__modal.opened {
+    visibility: visible;
+    bottom: 6.2em;
+  }
+  .sidebar-left__modal button {
+    text-align: left;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 1em;
+    padding: 1em 1.2em;
+  }
+  .sidebar-left__link {
+    padding: 0.8em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
+    border-radius: 30px;
+  }
+  .sidebar-left__link--tweet {
+    background-color: #209bf0;
+    justify-content: center;
+    padding: 0.8em 0;
+    margin-top: 1em;
+  }
+  .sidebar-left__card {
+    position: absolute;
+    -webkit-user-select: none;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    bottom: 1.2em;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5em 0.7em;
+    cursor: pointer;
+    width: 90%;
+    border-radius: 40px;
+  }
+  .sidebar-left__link.active {
+    color: #209bf0;
+  }
+}

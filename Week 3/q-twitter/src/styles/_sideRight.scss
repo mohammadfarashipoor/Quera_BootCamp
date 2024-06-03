@@ -1,0 +1,33 @@
+.sidebar-right {
+  display: none;
+}
+.sidebar-right input {
+  width: 90%;
+  height: 4em;
+  border-radius: 40px;
+  border: none;
+  padding: 0 1em;
+  background-color: #253341;
+  color: hsl(0, 0%, 100%);
+}
+.sidebar-right .trends {
+  width: 90%;
+  margin: 1.3em auto;
+  background-color: #192734;
+  border-radius: 15px;
+  padding: 1em;
+}
+.sidebar-right .trend {
+  margin: 1.5em 0;
+}
+@media (min-width: 40em) {
+  .sidebar-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 2 1;
+    border-right: 1px solid rgba(220, 220, 220, 0.175);
+    height: 100vh;
+  }
+}

@@ -18,6 +18,9 @@
 
 body {
   background: var(--foreground-rgb);
+  color: #ffffff;
+  font-size: 1em;
+  line-height: 1.4;
 }
 
 @layer utilities {
