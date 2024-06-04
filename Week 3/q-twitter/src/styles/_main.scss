@@ -1,0 +1,177 @@
+.main {
+  width: 100%;
+}
+.layout .header {
+  border-bottom: 1px solid rgba(220, 220, 220, 0.175);
+  width: 100%;
+  padding: 1em;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: #1c2731;
+  z-index: 3;
+  color: $White;
+}
+.layout .header svg {
+  font-size: 1.2em;
+}
+.tweet-form {
+  width: 100%;
+  border-bottom: 1px solid rgba(220, 220, 220, 0.175);
+}
+
+.tweet-form__img {
+  margin: 1.7em 1em;
+}
+.tweet-form__form {
+  width: 100vw;
+}
+.tweet-form__form ul {
+  list-style: none;
+}
+.tweet-form__form ul svg {
+  font-size: 1.2em;
+  color: #209bf0;
+  margin: 0 0.3em;
+}
+.tweet-form__form textarea {
+  font-size: 1.2em;
+  margin: 1em 0;
+  width: 98%;
+  height: 200px;
+  padding: 1em 0;
+  background-color: #15202b;
+  color: #ffffff;
+  resize: none;
+}
+.tweet-form__form button {
+  padding: 0.7em 1.4em;
+  border-radius: 20px;
+  background-color: #209bf0;
+  color: #ffffff;
+  cursor: pointer;
+  margin: 1em;
+}
+.avatar {
+  background-color: #209bf0;
+  border-radius: 50%;
+}
+.avatar__small {
+  width: 3em;
+  height: 3em;
+}
+.tweet {
+  position: relative;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+  width: 100%;
+  height: auto;
+  letter-spacing: 0.3px;
+  padding: 1em;
+  border-bottom: 1px solid rgba(220, 220, 220, 0.175);
+  cursor: pointer;
+  opacity: 1;
+  -webkit-animation: fadeIn 0.1s ease-in-out;
+  animation: fadeIn 0.1s ease-in-out;
+}
+.tweet__side--left {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.tweet__side--right {
+  -webkit-box-flex: 7;
+  -ms-flex: 7;
+  flex: 7;
+}
+.tweet__profile--name {
+  font-weight: 400;
+  color: #ffffff;
+}
+.tweet__profile--username {
+  margin: 0 0.5em;
+}
+.tweet__profile {
+  color: #4f5e6c;
+  font-size: 0.9em;
+}
+.tweet__body {
+  font-size: 0.9em;
+  font-weight: 200;
+  margin: 0.5em 0;
+  color: #ffffff;
+}
+.tweet__icons {
+  position: relative;
+}
+.tweet-btns__btn {
+  color: #4f5e6c;
+  font-size: 1.2em;
+  background-color: transparent;
+}
+
+.tweet-btns__like--active svg,
+.tweet-btns__like--active small {
+  -webkit-animation: like 0.1s ease-in-out forwards alternate;
+  animation: like 0.1s ease-in-out forwards alternate;
+}
+.tweet-btns__btn svg {
+  margin-left: 0.4em;
+}
+.tweet-btns__bookmark--active {
+  -webkit-animation: addBookmark 0.1s ease-in-out forwards alternate;
+  animation: addBookmark 0.1s ease-in-out forwards alternate;
+}
+.view-wrapper {
+  width: 20em;
+  margin-top: 3em;
+}
+.view-wrapper p {
+  font-weight: 200;
+  color: gray;
+}
+@media (min-width: 40em) {
+  .layout main {
+    -webkit-box-flex: 3;
+    -ms-flex: 3;
+    flex: 3;
+    overflow-y: auto;
+    height: 100vh;
+  }
+  .home .tweet-form {
+    width: 100%;
+    border-bottom: 1px solid rgba(220, 220, 220, 0.175);
+  }
+  .home .tweet-form textarea {
+    height: 5em;
+  }
+}
+@keyframes like {
+  0% {
+    opacity: 0.5;
+    color: orange;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    color: #f91880;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes addBookmark {
+  0% {
+    opacity: 0.5;
+    color: #ffffff;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    color: #1d82c8;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}

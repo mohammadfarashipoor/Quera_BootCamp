@@ -7,7 +7,7 @@ function SidebarRight() {
       <div className="trends">
         <h3>داغ ترین ها برای تو 🔥</h3>
         <TrendsCard />
-        <a>نمایش بیشتر</a>
+        <button>نمایش بیشتر</button>
       </div>
     </aside>
   );
