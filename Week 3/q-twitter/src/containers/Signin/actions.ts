@@ -62,10 +62,8 @@ export const login = () => {
   };
 };
 export const signOut = () => {
-  return (dispatch: Dispatch, getState: any) => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
-    toast.warning(`شما خارج شدید`);
-    routerHook().push("/login");
-  };
+  localStorage.removeItem("token");
+  localStorage.removeItem("username");
+  toast.warning(`شما خارج شدید`);
+  routerHook().push("/auth/signin");
 };

@@ -1,18 +1,10 @@
-import Link from "next/link";
-import { redirect } from "next/navigation";
-import React from "react";
-function SidebarModal({ isOpen }) {
-  const data = true;
+import { signOut } from "@/containers/Signin/actions";
 
-  return data ? (
+function SidebarModal({ isOpen }: { isOpen: boolean }) {
+  return (
     <div className={`sidebar-left__modal ${isOpen && "opened"} flex flex-col`}>
-      <button>
-        <Link href="/edit">Edit profile</Link>
-      </button>
-      <button>Sign out</button>
+      <button onClick={signOut}>خروج</button>
     </div>
-  ) : (
-    redirect("/signin")
   );
 }
 
