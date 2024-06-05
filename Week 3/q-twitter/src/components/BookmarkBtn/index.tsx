@@ -1,17 +1,18 @@
+"use client";
 import { MdOutlineBookmark, MdOutlineBookmarkBorder } from "react-icons/md";
-
-function BookmarkBtn({ id }) {
-  const { data } = { data: { bookmarks: [{ _id: "" }] } };
+import { useState } from "react";
+function BookmarkBtn() {
+  const [isBookmark, setIsBookmark] = useState(false);
   const remove = (e) => {
     e.preventDefault();
-    // dispatch(removeBookmark(id));
+    setIsBookmark(false);
   };
 
   const add = (e) => {
     e.preventDefault();
-    // dispatch(addBookmark(id));
+    setIsBookmark(true);
   };
-  return data.bookmarks.some((bookmark) => bookmark._id === id) ? (
+  return isBookmark ? (
     <button
       onClick={remove}
       className="flex items-center tweet-btns__btn tweet-btns__bookmark--active"

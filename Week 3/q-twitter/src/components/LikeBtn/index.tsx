@@ -1,18 +1,20 @@
+"use client";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { useState } from "react";
 
-function LikeBtn({ id, likes }) {
-  const { data } = { data: { _id: "" } };
+function LikeBtn({ likes }) {
+  const [isLike, setIsLike] = useState(false);
 
   const unlike = (e) => {
     e.preventDefault();
-    // dispatch(unlikeTweet(id));
+    setIsLike(false);
   };
 
   const like = (e) => {
     e.preventDefault();
-    // dispatch(likeTweet(id));
+    setIsLike(true);
   };
-  return likes.some((like) => like._id === data._id) ? (
+  return isLike ? (
     <button
       onClick={unlike}
       className="flex items-center tweet-btns__btn tweet-btns__like--active"

@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { FaTwitter } from "react-icons/fa";
-
-function Avatar({ username, avatar, size }) {
+interface AcatarProps {
+  [name: string]: string;
+}
+function Avatar(props: AcatarProps) {
+  const { username, avatar, size }: AcatarProps = props;
   return (
     <Link
       href={`/profile/${username}`}

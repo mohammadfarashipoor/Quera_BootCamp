@@ -3,14 +3,19 @@ import BookmarkBtn from "../BookmarkBtn";
 import LikeBtn from "../LikeBtn";
 import RetweetBtn from "../RetweetBtn";
 import ReplyBtn from "../ReplyBtn";
+interface TweetIconsProps {
+  reply: string[];
+  likes: string[];
+  className: string;
+}
 
-function TweetIcons({ tweet, className }) {
+function TweetIcons({ reply, likes, className }: TweetIconsProps) {
   return (
     <div className={`tweet__icons flex justify-between ${className}`}>
-      <ReplyBtn replies={tweet.replies.length} />
-      <RetweetBtn id={tweet._id} retweets={tweet.retweets.length} />
-      <LikeBtn id={tweet._id} likes={tweet.likes} />
-      <BookmarkBtn id={tweet._id} />
+      <ReplyBtn replies={reply?.length ?? 0} />
+      <RetweetBtn retweets={0} />
+      <LikeBtn likes={likes ?? []} />
+      <BookmarkBtn />
     </div>
   );
 }

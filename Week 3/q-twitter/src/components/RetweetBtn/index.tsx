@@ -1,6 +1,6 @@
 import { AiOutlineRetweet } from "react-icons/ai";
 
-function RetweetBtn({ id, retweets }) {
+function RetweetBtn({ retweets }) {
   const retweet = (e) => {
     e.preventDefault();
     // dispatch(newRetweet(id));

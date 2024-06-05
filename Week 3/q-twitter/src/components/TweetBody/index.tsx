@@ -1,22 +1,23 @@
-import Link from "next/link";
+"use client";
 import TweetCard from "../TweetCard";
+import { useEffect, useState } from "react";
+import { getTweet } from "@/containers/Tweet/actions";
 
-function TweetBody({ body, originalTweet }) {
+function TweetBody({ body, replyTweet }) {
+  const [originalTweet, setOriginalTweet] = useState();
+  useEffect(() => {
+    if (replyTweet) {
+      getTweet(replyTweet).then((res) => {
+        setOriginalTweet(res);
+      });
+    }
+  }, []);
   return (
     <div>
       <pre className="tweet__body">{body}</pre>
-      {originalTweet &&
-        (originalTweet.originalTweet ? (
-          <div>
-            <Link href={`tweet/${originalTweet._id}`}>
-              tweet/{originalTweet._id}
-            </Link>
-
-            {originalTweet.body}
-          </div>
-        ) : (
-          <TweetCard tweet={originalTweet} isRetweeted={originalTweet} />
-        ))}
+      {replyTweet && (
+        <TweetCard tweet={originalTweet} isRetweeted={originalTweet} />
+      )}
     </div>
   );
 }
