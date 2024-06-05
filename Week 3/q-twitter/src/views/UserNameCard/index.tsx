@@ -1,20 +1,19 @@
+"use client";
 import { BsThreeDots } from "react-icons/bs";
 import Avatar from "@/components/Avatar";
-function UserNameCard({ onClick }) {
-  const data = {
-    fname: "mohammad",
-    username: "MeeM",
-    avatar: "",
-  };
-  const { fname, username, avatar } = data;
+import { connect } from "react-redux";
+import actions from "@/lib/actions";
+
+function UserNameCard(props) {
+  const { name, username, onClick } = props;
   return (
     <div className="sidebar-left__card flex justify-between" onClick={onClick}>
       <div className="flex items-center">
         <div className="sidebar-left__card--img flex justify-center items-center">
-          <Avatar username={username} avatar={avatar} size="small" />
+          <Avatar username={username} size="small" />
         </div>
         <div className="sidebar-left__card--info">
-          <h3>{fname}</h3>
+          <h3>{name}</h3>
           <small>@{username}</small>
         </div>
       </div>
@@ -23,5 +22,10 @@ function UserNameCard({ onClick }) {
     </div>
   );
 }
-
-export default UserNameCard;
+const mapStateToProps = (state: any) => {
+  return {
+    name: state.user.userInfo?.name,
+    username: state.user.userInfo?.username,
+  };
+};
+export default connect(mapStateToProps, actions)(UserNameCard);
