@@ -14,6 +14,7 @@ import { allFieldsValidation } from "@/utils/validation";
 
 import { MySigninFormData, MySigninNameFormField } from "./type";
 import { Dispatch } from "@/lib/type";
+import { SET_AUTH } from "../Authentication/constants";
 
 export const loginChange = (name: MySigninNameFormField, value: string) => {
   let formData: MySigninFormData = {};
@@ -50,6 +51,7 @@ export const login = () => {
       setToken(response.data.token);
       toast.success(`با موفقیت وارد شدید .`);
       dispatch({ type: LOGIN_RESET });
+      dispatch({ type: SET_AUTH });
       routerHook().push("/");
     } catch (error) {
       const title = `لطفا دوباره تلاش کنید`;
