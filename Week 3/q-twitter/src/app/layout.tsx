@@ -3,7 +3,7 @@ import { Noto_Sans_Arabic } from "next/font/google";
 import "./globals.css";
 // import "@/assets/styles/style.css";
 import { StoreProvider } from "./StoreProvider";
-import Notification from "@/containers/Notification";
+import Notification from "@/components/Notification";
 import "@/styles/core.scss";
 import RouterHook from "./RouterHook";
 
