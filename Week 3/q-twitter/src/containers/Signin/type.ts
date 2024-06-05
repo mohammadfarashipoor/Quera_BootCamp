@@ -1,6 +1,5 @@
 export interface MySigninFormData {
-  password: string;
-  username: string;
+  [name: string]: string;
 }
 export interface MySigninProps {
   login: () => void;

@@ -1,9 +1,5 @@
 export interface MySignupFormData {
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  username: string;
+  [name: string]: string;
 }
 export interface MySignupProps {
   signUp: () => void;
@@ -14,9 +10,4 @@ export interface MySignupProps {
   formErrors: { [name: string]: Object };
   signupFormData: { [name: string]: MySignupNameFormField };
 }
-export type MySignupNameFormField =
-  | "email"
-  | "password"
-  | "firstName"
-  | "lastName"
-  | "username";
+export type MySignupNameFormField = "email" | "password" | "name" | "username";

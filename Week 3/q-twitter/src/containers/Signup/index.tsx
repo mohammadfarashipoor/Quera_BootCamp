@@ -18,26 +18,16 @@ function Signup(props: MySignupProps): JSX.Element {
       <hr />
       <Input
         type={"text"}
-        error={formErrors["firstName"]}
+        error={formErrors["name"]}
         label={"نام"}
-        name={"firstName"}
+        name={"name"}
         placeholder={"لطفا نام خود را وارد کنید"}
-        value={signupFormData.firstName}
+        value={signupFormData.name}
         onInputChange={(name, value) => {
           signupChange(name, value);
         }}
       />
-      <Input
-        type={"text"}
-        error={formErrors["lastName"]}
-        label={"نام خانوادگی"}
-        name={"lastName"}
-        placeholder={"لطفا نام خانوادگی خود را وارد کنید"}
-        value={signupFormData.lastName}
-        onInputChange={(name, value) => {
-          signupChange(name, value);
-        }}
-      />
+
       <Input
         type={"text"}
         error={formErrors["email"]}

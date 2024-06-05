@@ -16,13 +16,7 @@ import { MySignupFormData, MySignupNameFormField } from "./type";
 import { Dispatch } from "@/lib/type";
 
 export const signupChange = (name: MySignupNameFormField, value: string) => {
-  let formData: MySignupFormData = {
-    email: "",
-    password: "",
-    username: "",
-    firstName: "",
-    lastName: "",
-  };
+  let formData: MySignupFormData = {};
   formData[name] = value;
 
   return {
@@ -37,7 +31,7 @@ export const signUp = () => {
       const rules = {
         email: "required|email",
         password: "required|min:6",
-        firstName: "required",
+        name: "required",
         lastName: "required",
         username: "required",
       };
@@ -49,17 +43,16 @@ export const signUp = () => {
           "required.email": "ایمیل خود را وارد کنید",
           "required.password": "رمز عبور خود را وارد کنید",
           "min.password": "رمز عبور باید بیش از شش حرف باشد",
-          "required.firstName": "نام خود را وارد کنید",
-          "required.lastName": "نام خانوادگی خود را وارد کنید",
+          "required.name": "نام خود را وارد کنید",
           "required.username": "نام کاربری خود را وارد کنید",
         });
       if (!isValid) {
         return dispatch({ type: SET_SIGNUP_FORM_ERRORS, payload: errors });
       }
       dispatch({ type: SET_SIGNUP_LOADING, payload: true });
-      const response = await Axios.post("/auth/register", newUser);
-      localStorage.setItem("token", response.data.token);
-      setToken(response.data.token);
+      await Axios.post("/signup", newUser);
+      routerHook().push("/auth/signup");
+
       toast.success(`با موفقیت ثبت نام انجام شد .`);
       dispatch({ type: SIGNUP_RESET });
     } catch (error) {

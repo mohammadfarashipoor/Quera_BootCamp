@@ -40,8 +40,7 @@ const signupReducer = (state = initialState, action: Action) => {
         ...state,
         signupFormData: {
           email: "",
-          firstName: "",
-          username: "",
+          name: "",
           lastName: "",
           password: "",
         },

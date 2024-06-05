@@ -16,12 +16,8 @@ import { MySigninFormData, MySigninNameFormField } from "./type";
 import { Dispatch } from "@/lib/type";
 
 export const loginChange = (name: MySigninNameFormField, value: string) => {
-  let formData: MySigninFormData = {
-    password: "",
-    username: "",
-  };
+  let formData: MySigninFormData = {};
   formData[name] = value;
-
   return {
     type: LOGIN_CHANGE,
     payload: formData,
@@ -48,13 +44,15 @@ export const login = () => {
         return dispatch({ type: SET_LOGIN_FORM_ERRORS, payload: errors });
       }
       dispatch({ type: SET_LOGIN_LOADING, payload: true });
-      const response = await Axios.post("/auth/login", user);
+      const response = await Axios.post("/login/", user);
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("username", user.username);
       setToken(response.data.token);
       toast.success(`با موفقیت وارد شدید .`);
       dispatch({ type: LOGIN_RESET });
+      routerHook().push("/");
     } catch (error) {
-      const title = `به نظر مشکلی پیش آمده لطفا مدتی بعد ثبت نام کنید`;
+      const title = `لطفا دوباره تلاش کنید`;
       handleError(error, dispatch, title);
     } finally {
       dispatch({ type: SET_LOGIN_LOADING, payload: false });
@@ -63,8 +61,8 @@ export const login = () => {
 };
 export const signOut = () => {
   return (dispatch: Dispatch, getState: any) => {
-    "use client";
     localStorage.removeItem("token");
+    localStorage.removeItem("username");
     toast.warning(`شما خارج شدید`);
     routerHook().push("/login");
   };
