@@ -1,10 +1,10 @@
-import axios from "axios";
+import Axios from "./axios";
 
 const setToken = (token: string) => {
   if (token) {
-    axios.defaults.headers.common["Authorization"] = token;
+    Axios.defaults.headers.common["jwt"] = token;
   } else {
-    delete axios.defaults.headers.common["Authorization"];
+    delete Axios.defaults.headers.common["jwt"];
   }
 };
 
