@@ -3,35 +3,31 @@ import Menu from "@/views/Menu";
 import SidebarRight from "@/views/SideBarRight";
 import Header from "@/views/Header";
 import { useEffect } from "react";
-import { getFeed } from "@/containers/Feed/actions";
-import { getUserInfo } from "@/containers/User/actions";
 import setToken from "@/utils/token";
 import { SET_AUTH } from "@/containers/Authentication/constants";
 import { useDispatch } from "react-redux";
 import { redirect } from "next/navigation";
-
-function AppLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  useEffect(() => {
-    const username = localStorage.getItem("username");
-    if (username) {
-      getFeed(username);
-      getUserInfo();
-    }
-  }, []);
+import { connect } from "react-redux";
+import actions from "@/lib/actions";
+function AppLayout(props) {
+  const { getFeed, getUserInfo, children } = props;
   const dispatch = useDispatch();
+
   useEffect(() => {
     const token = localStorage.getItem("token");
+    const username = localStorage.getItem("username");
     if (token) {
       setToken(token);
       dispatch({ type: SET_AUTH });
     } else {
       redirect("/auth/signin");
     }
+    if (username) {
+      getFeed(username);
+      getUserInfo();
+    }
   }, []);
+
   return (
     <div className="layout flex justify-between">
       <Menu />
@@ -39,9 +35,11 @@ function AppLayout({
         <Header />
         {children}
       </main>
-      <SidebarRight />
+      {/* <SidebarRight /> */}
     </div>
   );
 }
-
-export default AppLayout;
+const mapStateToProps = (state: any) => {
+  return {};
+};
+export default connect(mapStateToProps, actions)(AppLayout);
