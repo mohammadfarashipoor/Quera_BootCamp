@@ -5,7 +5,7 @@ const cors = require("cors");
 require("./utils/db");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const { ACCESS_TOKEN } = process.env;
 const auth = new Auth(ACCESS_TOKEN);
 
