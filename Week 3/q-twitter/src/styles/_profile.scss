@@ -1,0 +1,64 @@
+.profile-card {
+  padding-bottom: 1em;
+}
+.profile-card ::-webkit-scrollbar {
+  display: none;
+}
+.main::-webkit-scrollbar {
+  display: none;
+}
+.profile-card__banner {
+  width: 100%;
+  height: 13em;
+  background: #4c5d69;
+}
+.profile-card__banner img {
+  width: 100%;
+  height: 100%;
+}
+.profile-card__bio {
+  padding: 0 1em 1em 1em;
+  border-bottom: 1px solid rgba(220, 220, 220, 0.175);
+  margin-top: -4em;
+}
+.profile-card__bio h3 {
+  margin-top: 0.6em;
+}
+.profile-card__bio ul {
+  list-style: none;
+  margin-top: 0.6em;
+  margin-left: -0.2em;
+}
+.profile-card__bio ul li {
+  margin-right: 0.6em;
+  font-size: 0.9em;
+  color: $White;
+}
+.follow-btn {
+  padding: 1em 2em;
+  background: #ffffff;
+  color: #191919;
+  border-radius: 50px;
+  font-weight: 800;
+}
+.profile-card__bio ul li svg {
+  margin-right: 0.3em;
+}
+.profile-card__bio--follow p {
+  color: #4c5d69;
+  margin: 0.4em 1.3em 0 0;
+}
+.profile-card__bio--follow span {
+  display: inline-block;
+  color: #ffffff;
+  font-weight: 500;
+}
+.profile-card__bio small {
+  color: #4c5d69;
+}
+.profile-card__tweets {
+  width: 100%;
+  padding: 1em 0;
+  border-bottom: 1px solid rgba(220, 220, 220, 0.175);
+  color: $White;
+}

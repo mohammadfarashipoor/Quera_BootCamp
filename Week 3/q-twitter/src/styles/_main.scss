@@ -26,6 +26,13 @@
 .tweet-form__form {
   width: 100vw;
 }
+.tweet-form__form input {
+  padding: 0.5em;
+  color: $White;
+  width: 98%;
+  background: transparent;
+  border: 0;
+}
 .tweet-form__form ul {
   list-style: none;
 }
@@ -66,6 +73,7 @@
   -ms-grid-row-align: center;
   align-self: center;
   width: 100%;
+  gap: 10px;
   height: auto;
   letter-spacing: 0.3px;
   padding: 1em;

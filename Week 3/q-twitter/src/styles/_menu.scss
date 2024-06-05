@@ -43,6 +43,10 @@
 .avatar__small svg {
   font-size: 1.2em;
 }
+.avatar__large {
+  width: 8em;
+  height: 8em;
+}
 @media (min-width: 40em) {
   .sidebar-left {
     position: relative;
