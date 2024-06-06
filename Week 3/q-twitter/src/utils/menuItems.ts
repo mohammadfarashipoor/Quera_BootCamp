@@ -20,12 +20,11 @@ const sidebarLinks = [
   },
   {
     text: "جست و جو",
-    path: "/explore",
+    path: "/search",
     icon: FiHash,
     class: "explore",
   },
 
- 
   {
     text: "نشان شده ها",
     path: "/bookmarks",

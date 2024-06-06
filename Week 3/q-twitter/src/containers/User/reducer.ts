@@ -1,9 +1,15 @@
 import { Action } from "@/lib/type";
-import { USER_CHANGE, SET_USER_LOADING, USER_CHANGE_INFO } from "./constants";
+import {
+  USER_CHANGE,
+  SET_USER_LOADING,
+  USER_CHANGE_INFO,
+  USER_SEARCH_VALUE,
+} from "./constants";
 
 const initialState = {
   userInfo: {},
   userState: {},
+  searchValue: "",
   isLoading: false,
 };
 const tweetReducer = (state = initialState, action: Action) => {
@@ -24,7 +30,11 @@ const tweetReducer = (state = initialState, action: Action) => {
         ...state,
         isLoading: action.payload,
       };
-
+    case USER_SEARCH_VALUE:
+      return {
+        ...state,
+        searchValue: action.payload,
+      };
     default:
       return state;
   }
