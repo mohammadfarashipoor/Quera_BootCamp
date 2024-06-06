@@ -7,7 +7,7 @@ import UserNameCard from "@/views/UserNameCard";
 import UserNameModal from "@/views/UserNameModal";
 import { useState } from "react";
 
-function Menu() {
+function Menu({ username }: { username: string }) {
   const pathWithoutParams = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -21,7 +21,7 @@ function Menu() {
               : null
           }`}
           key={linkIdx}
-          href={link.class === "profile" ? link.path + "meem" : link.path}
+          href={link.class === "profile" ? link.path + username : link.path}
         >
           {link.icon !== "" && <link.icon className="sidebar-left__icon" />}
           <p className="sidebar-left__text">{link.text}</p>

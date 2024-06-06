@@ -10,7 +10,7 @@ import { redirect } from "next/navigation";
 import { connect } from "react-redux";
 import actions from "@/lib/actions";
 function AppLayout(props) {
-  const { getFeed, getUserInfo, children } = props;
+  const { username, getFeed, getUserInfo, children } = props;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,7 +30,7 @@ function AppLayout(props) {
 
   return (
     <div className="layout flex justify-between">
-      <Menu />
+      <Menu username={username} />
       <main id="main" className="main flex--2">
         <Header />
         {children}
@@ -40,6 +40,8 @@ function AppLayout(props) {
   );
 }
 const mapStateToProps = (state: any) => {
-  return {};
+  return {
+    username: state.user?.userInfo.username,
+  };
 };
 export default connect(mapStateToProps, actions)(AppLayout);
