@@ -18,7 +18,7 @@ function Search(props: SearchProps) {
     <div className="flex items-center flex-col justify-center h-screen">
       <div className="flex items-center justify-center">
         <input
-          className="bg-blue-100 p-2 rounded-md m-2 border-1"
+          className="bg-blue-100 p-3 rounded-md m-1 border-1"
           name="search"
           placeholder="نام کاربر را وارد کنید"
           value={searchValue}
@@ -27,7 +27,7 @@ function Search(props: SearchProps) {
           }}
         />
         <button disabled={!searchValue} onClick={(e) => handleSeach(e)}>
-          <IoIosSearch className=" text-4xl bg-blue-400 rounded-md p-2 text-white" />
+          <IoIosSearch className="text-5xl bg-blue-400 rounded-md p-3 text-white" />
         </button>
       </div>
     </div>
