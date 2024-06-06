@@ -3,6 +3,7 @@ import TweetHeader from "../TweetHeader";
 import TweetBody from "../TweetBody";
 import TweetIcons from "../TweetIcons";
 import { Tweet } from "@/containers/Tweet/type";
+import { useRouter } from "next/navigation";
 
 function TweetCard({
   tweet,
@@ -11,8 +12,12 @@ function TweetCard({
   tweet: Tweet;
   isRetweeted?: boolean;
 }) {
+  const router = useRouter();
   return (
-    <div className={`tweet flex ${isRetweeted && "tweet__retweet"}`}>
+    <div
+      onClick={() => router.push(`/tweet/${tweet.id}`)}
+      className={`tweet flex ${isRetweeted && "tweet__retweet"}`}
+    >
       <div className="tweet__side--left">
         <Avatar username={tweet.user?.username} size="small" />
       </div>

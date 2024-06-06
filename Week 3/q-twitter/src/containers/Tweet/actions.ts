@@ -48,20 +48,23 @@ export const newTweet = () => {
     }
   };
 };
-export const getTweet = async (tweetId: string) => {
-  // return async (dispatch: Dispatch, getState: any) => {
-  try {
-    // dispatch({ type: SET_TWEET_LOADING, payload: true });
-    const response = await Axios.get(`/tweets/${tweetId}`);
-    // dispatch({ type: TWEET_CHANGE_STATE, payload: response.data });
-    return response.data;
-  } catch (error) {
-    const title = `به نظر مشکلی پیش آمده لطفا مدتی بعد تلاش کنید`;
-    handleError(error, null, title);
-  } finally {
-    // dispatch({ type: SET_TWEET_LOADING, payload: false });
-  }
-  // };
+export const fetchTweet = async (tweetId: string) => {
+  const res = await Axios.get(`/tweets/${tweetId}`);
+  return res.data;
+};
+export const getTweet = (tweetId: string) => {
+  return async (dispatch: Dispatch, getState: any) => {
+    try {
+      dispatch({ type: SET_TWEET_LOADING, payload: true });
+      const response = await fetchTweet(tweetId);
+      dispatch({ type: TWEET_CHANGE_STATE, payload: response });
+    } catch (error) {
+      const title = `به نظر مشکلی پیش آمده لطفا مدتی بعد تلاش کنید`;
+      handleError(error, null, title);
+    } finally {
+      dispatch({ type: SET_TWEET_LOADING, payload: false });
+    }
+  };
 };
 export const likeTweet = (tweetId: string) => {
   return async (dispatch: Dispatch, getState: any) => {

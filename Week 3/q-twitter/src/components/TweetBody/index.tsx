@@ -1,7 +1,7 @@
 "use client";
 import TweetCard from "../TweetCard";
 import { useEffect, useState } from "react";
-import { getTweet } from "@/containers/Tweet/actions";
+import { fetchTweet } from "@/containers/Tweet/actions";
 import { Tweet } from "@/containers/Tweet/type";
 
 function TweetBody({
@@ -14,8 +14,10 @@ function TweetBody({
   const [originalTweet, setOriginalTweet] = useState<Tweet>();
   useEffect(() => {
     if (replyTweet) {
-      getTweet(replyTweet).then((res) => {
-        setOriginalTweet(res);
+      fetchTweet(replyTweet).then((res) => {
+        const tweetReplay = res.thread.find((tweet) => tweet.id === replyTweet);
+        console.log(tweetReplay);
+        setOriginalTweet(tweetReplay);
       });
     }
   }, []);

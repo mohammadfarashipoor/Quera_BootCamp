@@ -14,7 +14,10 @@ const initialState = {
     reply: null,
     tags: [],
   },
-  tweetState: {},
+  tweetState: {
+    thread: [],
+    tweetId: "",
+  },
   formErrors: {},
   isLoading: false,
 };

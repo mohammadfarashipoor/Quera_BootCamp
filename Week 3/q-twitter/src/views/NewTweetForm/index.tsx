@@ -6,14 +6,27 @@ import { RiFileGifLine } from "react-icons/ri";
 import { GrEmoji } from "react-icons/gr";
 import { connect } from "react-redux";
 import actions from "@/lib/actions";
+import { useEffect } from "react";
 function NewTweetForm(props) {
-  const { newTweet, tweetChange, tweetForm, username, avatar, formErrors } =
-    props;
+  const {
+    newTweet,
+    tweetChange,
+    tweetForm,
+    username,
+    avatar,
+    formErrors,
+    replied,
+  } = props;
   const handleSubmit = (e) => {
     e.preventDefault();
     newTweet();
     e.target.reset();
   };
+  useEffect(() => {
+    if (replied) {
+      tweetChange("reply", replied);
+    }
+  }, []);
   return (
     <div className="tweet-form flex items-start">
       <div className="tweet-form__img flex justify-center items-center">
@@ -59,7 +72,7 @@ function NewTweetForm(props) {
 }
 const mapStateToProps = (state: any) => {
   return {
-    username: "state.user.username",
+    username: state.user.userInfo.username,
     avatar: "",
     tweetForm: state.tweet.tweetForm,
     formErrors: state.tweet.formErrors,
