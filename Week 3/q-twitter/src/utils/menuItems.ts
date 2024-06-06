@@ -19,23 +19,13 @@ const sidebarLinks = [
     class: "home",
   },
   {
-    text: "وب",
+    text: "جست و جو",
     path: "/explore",
     icon: FiHash,
     class: "explore",
   },
-  {
-    text: "اطلاعیه ها",
-    path: "/notifications",
-    icon: IoMdNotificationsOutline,
-    class: "notification",
-  },
-  {
-    text: "پیام ها",
-    path: "/messages",
-    icon: FiMail,
-    class: "message",
-  },
+
+ 
   {
     text: "نشان شده ها",
     path: "/bookmarks",
