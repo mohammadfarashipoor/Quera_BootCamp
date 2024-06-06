@@ -9,7 +9,13 @@ import { useDispatch } from "react-redux";
 import { redirect } from "next/navigation";
 import { connect } from "react-redux";
 import actions from "@/lib/actions";
-function AppLayout(props) {
+interface AppLayoutProps {
+  username: string;
+  getFeed: (username: string) => void;
+  getUserInfo: () => void;
+  children: React.ReactNode;
+}
+function AppLayout(props: AppLayoutProps) {
   const { username, getFeed, getUserInfo, children } = props;
   const dispatch = useDispatch();
 

@@ -2,16 +2,14 @@
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { useState } from "react";
 
-function LikeBtn({ likes }) {
+function LikeBtn({ likes }: { likes: string[] }) {
   const [isLike, setIsLike] = useState(false);
 
-  const unlike = (e) => {
-    e.preventDefault();
+  const unlike = () => {
     setIsLike(false);
   };
 
-  const like = (e) => {
-    e.preventDefault();
+  const like = () => {
     setIsLike(true);
   };
   return isLike ? (

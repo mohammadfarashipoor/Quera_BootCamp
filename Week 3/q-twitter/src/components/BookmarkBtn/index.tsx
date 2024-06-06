@@ -3,13 +3,11 @@ import { MdOutlineBookmark, MdOutlineBookmarkBorder } from "react-icons/md";
 import { useState } from "react";
 function BookmarkBtn() {
   const [isBookmark, setIsBookmark] = useState(false);
-  const remove = (e) => {
-    e.preventDefault();
+  const remove = () => {
     setIsBookmark(false);
   };
 
-  const add = (e) => {
-    e.preventDefault();
+  const add = () => {
     setIsBookmark(true);
   };
   return isBookmark ? (

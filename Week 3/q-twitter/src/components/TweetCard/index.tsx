@@ -2,8 +2,15 @@ import Avatar from "../Avatar";
 import TweetHeader from "../TweetHeader";
 import TweetBody from "../TweetBody";
 import TweetIcons from "../TweetIcons";
+import { Tweet } from "@/containers/Tweet/type";
 
-function TweetCard({ tweet, isRetweeted }) {
+function TweetCard({
+  tweet,
+  isRetweeted,
+}: {
+  tweet: Tweet;
+  isRetweeted?: boolean;
+}) {
   return (
     <div className={`tweet flex ${isRetweeted && "tweet__retweet"}`}>
       <div className="tweet__side--left">
@@ -14,8 +21,8 @@ function TweetCard({ tweet, isRetweeted }) {
         <TweetBody body={tweet.body} replyTweet={tweet.reply} />
         <TweetIcons
           reply={tweet.reply}
-          likes={tweet.likes ?? 0}
-          className={isRetweeted && "hidden"}
+          likes={tweet.likes}
+          className={`${isRetweeted && "hidden"}`}
         />
       </div>
     </div>

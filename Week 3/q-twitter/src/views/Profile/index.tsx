@@ -2,14 +2,14 @@ import Avatar from "@/components/Avatar";
 import EditBtn from "@/components/EditBtn";
 import FollowBtn from "@/components/FollowBtn";
 import TweetCard from "@/components/TweetCard";
+import { UserData } from "@/containers/User/type";
 import { BsCalendar3 } from "react-icons/bs";
 import { IoMdLink } from "react-icons/io";
 import { MdLocationOn } from "react-icons/md";
 
-function Profile(props) {
+function Profile(props: { profile: UserData; currentProfile: boolean }) {
   const { profile, currentProfile } = props;
-  const { username, followers, name, biography, following, tweets } = profile;
-  console.log(profile);
+  const { username, followers, name, biography, followings, tweets } = profile;
   return (
     <div className="profile-card">
       <div className="profile-card__banner">
@@ -39,7 +39,7 @@ function Profile(props) {
         </ul>
         <div className="profile-card__bio--follow flex">
           <p>
-            <span>{following?.length ?? "0"}</span> Folowing
+            <span>{followings?.length ?? "0"}</span> Folowing
           </p>
           <p>
             <span>{followers?.length ?? "0"}</span> Followers

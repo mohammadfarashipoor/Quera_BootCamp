@@ -1,6 +1,6 @@
 import { FaRegComment } from "react-icons/fa";
 
-function ReplyBtn({ replies }) {
+function ReplyBtn({ replies }: { replies: number }) {
   return (
     <div className="flex items-center tweet-btns__btn tweet-btns__reply">
       <FaRegComment />
