@@ -1,17 +1,40 @@
 "use client";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { useState } from "react";
-
-function LikeBtn({ likes }: { likes: string[] }) {
+import { useState, useEffect } from "react";
+function LikeBtn({
+  likes,
+  tweetId,
+  currentUserId,
+  likeTweet,
+}: {
+  likes: string[];
+  tweetId: string;
+  currentUserId: string;
+  likeTweet: (tweetId: string) => void;
+}) {
   const [isLike, setIsLike] = useState(false);
 
-  const unlike = () => {
-    setIsLike(false);
+  const unlike = (e: React.MouseEvent) => {
+    e.preventDefault();
+    likeTweet(tweetId);
   };
 
-  const like = () => {
-    setIsLike(true);
+  const like = (e: React.MouseEvent) => {
+    e.preventDefault();
+    likeTweet(tweetId);
   };
+  function handleCheck() {
+    likes.map((userId) => {
+      if (userId === currentUserId) {
+        setIsLike(true);
+      } else {
+        setIsLike(false);
+      }
+    });
+  }
+  useEffect(() => {
+    handleCheck();
+  }, [likes]);
   return isLike ? (
     <button
       onClick={unlike}
