@@ -12,6 +12,7 @@ import handleError from "@/utils/error";
 import { toast } from "react-toastify";
 import { getFeed } from "../Feed/actions";
 import routerHook from "@/utils/navigation";
+import extractHashtags from "@/utils/extractHashtags";
 
 export const tweetChange = (name: string, value: string | string[]) => {
   let tweetData: any = {};
@@ -27,7 +28,10 @@ export const newTweet = () => {
       const rules = {
         body: "required",
       };
-      const newTweet = getState().tweet.tweetForm;
+      let newTweet = getState().tweet.tweetForm;
+      const tags = extractHashtags(newTweet.tags);
+      dispatch({ type: TWEET_CHANGE_FORM, payload: { tags } });
+      newTweet = getState().tweet.tweetForm;
       const username = getState().user.userInfo;
       const { isValid, errors }: { isValid?: boolean; errors?: any } =
         allFieldsValidation(newTweet, rules, {

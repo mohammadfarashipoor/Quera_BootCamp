@@ -23,7 +23,11 @@ function TweetCard({
       </div>
       <div className="tweet__side--right">
         <TweetHeader author={tweet.user} />
-        <TweetBody body={tweet.body} replyTweet={tweet.reply} />
+        <TweetBody
+          body={tweet.body}
+          tags={tweet.tags}
+          replyTweet={tweet.reply}
+        />
         <TweetIcons
           reply={tweet.reply}
           tweetId={tweet.id}

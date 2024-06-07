@@ -17,7 +17,7 @@ function NewTweetForm(props) {
     formErrors,
     replied,
   } = props;
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     newTweet();
     e.target.reset();
@@ -27,6 +27,7 @@ function NewTweetForm(props) {
       tweetChange("reply", replied);
     }
   }, []);
+
   return (
     <div className="tweet-form flex items-start">
       <div className="tweet-form__img flex justify-center items-center">

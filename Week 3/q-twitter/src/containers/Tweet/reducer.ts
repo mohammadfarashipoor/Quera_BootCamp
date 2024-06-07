@@ -9,9 +9,8 @@ import {
 
 const initialState = {
   tweetForm: {
-    _id: "",
     body: "",
-    reply: null,
+    reply: "",
     tags: [],
   },
   tweetState: {
@@ -45,7 +44,6 @@ const tweetReducer = (state = initialState, action: Action) => {
       };
     case TWEET_RESET:
       return {
-        ...state,
         ...initialState,
       };
     default:
