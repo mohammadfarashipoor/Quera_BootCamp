@@ -1,6 +1,7 @@
 "use client";
 import routerHook from "@/utils/navigation";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 function RouterHook({
   children,
@@ -8,6 +9,12 @@ function RouterHook({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      router.replace("/");
+    }
+  }, []);
   routerHook(router);
   return children;
 }
