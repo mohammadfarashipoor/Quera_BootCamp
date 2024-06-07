@@ -10,7 +10,6 @@ import actions from "@/lib/actions";
 function Home(props) {
   const [page, setPage] = useState(1);
   const { feedState, userInfo } = props;
-  console.log(userInfo);
   return (
     <div className="home">
       <NewTweetForm />

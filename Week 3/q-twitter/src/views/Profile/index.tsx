@@ -10,6 +10,7 @@ import { MdLocationOn } from "react-icons/md";
 function Profile(props: { profile: UserData; currentProfile: boolean }) {
   const { profile, currentProfile } = props;
   const { username, followers, name, biography, followings, tweets } = profile;
+  console.log(currentProfile);
   return (
     <div className="profile-card">
       <div className="profile-card__banner">

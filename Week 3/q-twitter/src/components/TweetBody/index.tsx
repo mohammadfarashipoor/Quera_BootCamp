@@ -16,7 +16,6 @@ function TweetBody({
     if (replyTweet) {
       fetchTweet(replyTweet).then((res) => {
         const tweetReplay = res.thread.find((tweet) => tweet.id === replyTweet);
-        console.log(tweetReplay);
         setOriginalTweet(tweetReplay);
       });
     }

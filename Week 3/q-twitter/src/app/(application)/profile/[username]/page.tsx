@@ -16,23 +16,23 @@ type EmptyObject = {};
 function ProfilePage(props: ProfilePageProps) {
   const { userInfo, userState, getUser } = props;
   const [profile, setProfile] = useState<UserData | EmptyObject>({});
-  let currentProfile = false;
   const { username }: { username: string } = useParams();
   useEffect(() => {
     if (username !== userInfo.username) {
       getUser(username);
-      currentProfile = false;
       setProfile(userState);
-      console.log(userState);
     } else {
-      currentProfile = true;
       setProfile(userInfo);
     }
   }, [userInfo]);
+
   return (
     <>
       {Object.keys(profile).length !== 0 ? (
-        <Profile profile={profile} currentProfile={currentProfile} />
+        <Profile
+          profile={profile}
+          currentProfile={username === userInfo.username}
+        />
       ) : (
         <div className="flex items-center flex-col justify-center h-screen text-white">
           <IoIosWarning className="text-5xl" />
