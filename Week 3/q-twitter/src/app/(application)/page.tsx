@@ -6,23 +6,24 @@ import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { connect } from "react-redux";
 import actions from "@/lib/actions";
+import { Tweet } from "@/containers/Tweet/type";
 
-function Home(props) {
+function Home(props: { feedState: { tweets: Tweet[]; username: string } }) {
   const [page, setPage] = useState(1);
-  const { feedState, userInfo } = props;
+  const { feedState } = props;
   return (
     <div className="home">
       <NewTweetForm />
-      {feedState.thread ? (
+      {feedState.tweets ? (
         <InfiniteScroll
-          dataLength={feedState.thread.length}
+          dataLength={feedState.tweets.length}
           next={() => setPage(page + 1)}
           scrollableTarget="main"
           hasMore={true}
           loader={<h4>صبر کنید...</h4>}
         >
-          {feedState.thread.map((tweet) => (
-            <TweetCard key={tweet.id} tweet={tweet} isRetweeted={null} />
+          {feedState.tweets.map((tweet: Tweet) => (
+            <TweetCard key={tweet.id} tweet={tweet} isRetweeted={undefined} />
           ))}
         </InfiniteScroll>
       ) : (
@@ -39,7 +40,6 @@ function Home(props) {
 const mapStateToProps = (state: any) => {
   return {
     feedState: state.feed.feedState,
-    userInfo: state.user.userInfo,
     isLoading: state.feed.isLoading,
   };
 };

@@ -14,7 +14,7 @@ const sidebarLinks = [
   },
   {
     text: "خانه",
-    path: "/home",
+    path: "/",
     icon: RiHome4Line,
     class: "home",
   },
