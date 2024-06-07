@@ -14,6 +14,7 @@ import { allFieldsValidation } from "@/utils/validation";
 
 import { MySignupFormData, MySignupNameFormField } from "./type";
 import { Dispatch } from "@/lib/type";
+import routerHook from "@/utils/navigation";
 
 export const signupChange = (name: MySignupNameFormField, value: string) => {
   let formData: MySignupFormData = {};
@@ -32,7 +33,6 @@ export const signUp = () => {
         email: "required|email",
         password: "required|min:6",
         name: "required",
-        lastName: "required",
         username: "required",
       };
 
@@ -51,7 +51,7 @@ export const signUp = () => {
       }
       dispatch({ type: SET_SIGNUP_LOADING, payload: true });
       await Axios.post("/signup", newUser);
-      routerHook().push("/auth/signup");
+      routerHook().push("/auth/signin");
 
       toast.success(`با موفقیت ثبت نام انجام شد .`);
       dispatch({ type: SIGNUP_RESET });
