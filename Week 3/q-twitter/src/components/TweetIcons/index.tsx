@@ -6,13 +6,16 @@ import ReplyBtn from "../ReplyBtn";
 import { connect } from "react-redux";
 import actions from "@/lib/actions";
 import { UserData } from "@/containers/User/type";
+import DeleteBtn from "../DeteleBtn";
 interface TweetIconsProps {
   reply: string | null;
   likes: string[] | undefined;
   className: string;
   tweetId: string;
   currentUser: UserData;
+  tweetUser: UserData;
   likeTweet: (tweetId: string) => void;
+  deleteTweet: (tweetId: string) => void;
 }
 
 function TweetIcons({
@@ -21,7 +24,9 @@ function TweetIcons({
   className,
   tweetId,
   likeTweet,
+  tweetUser,
   currentUser,
+  deleteTweet,
 }: TweetIconsProps) {
   return (
     <div className={`tweet__icons flex justify-between ${className}`}>
@@ -34,6 +39,12 @@ function TweetIcons({
         currentUserId={currentUser.id}
       />
       <BookmarkBtn />
+      <DeleteBtn
+        tweetId={tweetId}
+        tweetUserId={tweetUser.id}
+        currentUserId={currentUser.id}
+        deleteTweet={deleteTweet}
+      />
     </div>
   );
 }

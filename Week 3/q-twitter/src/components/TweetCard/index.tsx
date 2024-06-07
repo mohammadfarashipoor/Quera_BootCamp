@@ -27,6 +27,7 @@ function TweetCard({
         <TweetIcons
           reply={tweet.reply}
           tweetId={tweet.id}
+          tweetUser={tweet.user}
           likes={tweet.likes}
           className={`${isRetweeted && "hidden"}`}
         />
