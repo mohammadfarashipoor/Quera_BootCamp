@@ -80,11 +80,11 @@ export const likeTweet = (tweetId: string) => {
     }
   };
 };
-export const deleteTweet = (tweetId: any) => {
+export const deleteTweet = (tweet_id: string) => {
   return async (dispatch: Dispatch, getState: any) => {
     try {
       dispatch({ type: SET_TWEET_LOADING, payload: true });
-      await Axios.delete(`/delete_tweet`, { tweet_id: tweetId });
+      await Axios.delete(`/delete_tweet`, { tweet_id });
       toast.success(`با موفقیت توییت حذف شد .`);
     } catch (error) {
       const title = `به نظر مشکلی پیش آمده لطفا مدتی بعد تلاش کنید`;

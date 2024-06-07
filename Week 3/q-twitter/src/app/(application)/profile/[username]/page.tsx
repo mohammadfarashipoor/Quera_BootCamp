@@ -11,10 +11,11 @@ interface ProfilePageProps {
   userInfo: UserData;
   userState: UserData;
   getUser: (username: string) => void;
+  followUser: (username: string) => void;
 }
 type EmptyObject = {};
 function ProfilePage(props: ProfilePageProps) {
-  const { userInfo, userState, getUser } = props;
+  const { userInfo, userState, getUser, followUser } = props;
   const [profile, setProfile] = useState<UserData | EmptyObject>({});
   const { username }: { username: string } = useParams();
   useEffect(() => {
@@ -31,7 +32,8 @@ function ProfilePage(props: ProfilePageProps) {
       {Object.keys(profile).length !== 0 ? (
         <Profile
           profile={profile}
-          currentProfile={username === userInfo.username}
+          currentUserId={userInfo.id}
+          followUser={followUser}
         />
       ) : (
         <div className="flex items-center flex-col justify-center h-screen text-white">

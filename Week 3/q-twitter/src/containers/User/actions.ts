@@ -42,8 +42,9 @@ export const followUser = (username: string) => {
   return async (dispatch: Dispatch, getState: any) => {
     try {
       dispatch({ type: SET_USER_LOADING, payload: true });
-      const response = await Axios.post(`/follow/`, username);
-      toast.success(`با موفقیت توییت انجام شد .`);
+      const response = await Axios.put(`/follow/`, { username });
+      getUser(username);
+      toast.success(`با موفقیت ${username} دنبال شد`);
     } catch (error) {
       const title = `به نظر مشکلی پیش آمده لطفا مدتی بعد تلاش کنید`;
       handleError(error, dispatch, title);

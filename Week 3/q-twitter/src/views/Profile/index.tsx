@@ -7,10 +7,14 @@ import { BsCalendar3 } from "react-icons/bs";
 import { IoMdLink } from "react-icons/io";
 import { MdLocationOn } from "react-icons/md";
 
-function Profile(props: { profile: UserData; currentProfile: boolean }) {
-  const { profile, currentProfile } = props;
-  const { username, followers, name, biography, followings, tweets } = profile;
-  console.log(currentProfile);
+function Profile(props: {
+  profile: UserData;
+  currentUserId: string;
+  followUser: (username: string) => void;
+}) {
+  const { profile, currentUserId, followUser } = props;
+  const { id, username, followers, name, biography, followings, tweets } =
+    profile;
   return (
     <div className="profile-card">
       <div className="profile-card__banner">
@@ -21,7 +25,16 @@ function Profile(props: { profile: UserData; currentProfile: boolean }) {
           <div className="profile-card__bio--img flex justify-center items-center">
             <Avatar size="large" username={username} />
           </div>
-          {currentProfile ? <EditBtn /> : <FollowBtn />}
+          {id === currentUserId ? (
+            <EditBtn />
+          ) : (
+            <FollowBtn
+              username={username}
+              followUser={followUser}
+              currentUserId={id}
+              followersUser={followers}
+            />
+          )}
         </div>
         <h3>{name}</h3>
         <small>@{username}</small>
