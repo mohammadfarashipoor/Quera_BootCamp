@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_Arabic } from "next/font/google";
 import "./globals.css";
-// import "@/assets/styles/style.css";
 import { StoreProvider } from "./StoreProvider";
 import Notification from "@/components/Notification";
 import "@/styles/core.scss";
