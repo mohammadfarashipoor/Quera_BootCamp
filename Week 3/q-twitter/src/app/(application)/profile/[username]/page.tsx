@@ -7,15 +7,17 @@ import { useParams } from "next/navigation";
 import { UserData } from "@/containers/User/type";
 import { IoIosWarning } from "react-icons/io";
 import Link from "next/link";
+import Spinner from "@/components/Spinner";
 interface ProfilePageProps {
   userInfo: UserData;
   userState: UserData;
+  isLoading: boolean;
   getUser: (username: string) => void;
   followUser: (username: string) => void;
 }
 type EmptyObject = {};
 function ProfilePage(props: ProfilePageProps) {
-  const { userInfo, userState, getUser, followUser } = props;
+  const { userInfo, userState, getUser, followUser, isLoading } = props;
   const [profile, setProfile] = useState<UserData | EmptyObject>({});
   const { username }: { username: string } = useParams();
   useEffect(() => {
@@ -27,7 +29,9 @@ function ProfilePage(props: ProfilePageProps) {
     }
   }, [userInfo]);
 
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <>
       {Object.keys(profile).length !== 0 ? (
         <Profile
@@ -51,6 +55,7 @@ const mapStateToProps = (state: any) => {
   return {
     userInfo: state.user.userInfo,
     userState: state.user.userState,
+    isLoading: state.user.isLoading,
   };
 };
 export default connect(mapStateToProps, actions)(ProfilePage);

@@ -5,14 +5,17 @@ import { connect } from "react-redux";
 import actions from "@/lib/actions";
 
 import Link from "next/link";
+import Spinner from "@/components/Spinner";
 
 function Signup(props: MySignupProps): JSX.Element {
-  const { signUp, signupChange, formErrors, signupFormData } = props;
+  const { signUp, signupChange, formErrors, signupFormData, isLoading } = props;
   function handlesignUp(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     signUp();
   }
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <form className="auth__form" onSubmit={(e) => handlesignUp(e)}>
       <h2>ثبت نام</h2>
       <hr />

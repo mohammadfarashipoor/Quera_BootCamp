@@ -3,6 +3,7 @@ export interface MySignupFormData {
 }
 export interface MySignupProps {
   signUp: () => void;
+  isLoading: boolean;
   signupChange: (
     name: string,
     value: string

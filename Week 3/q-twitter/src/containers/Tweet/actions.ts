@@ -11,6 +11,7 @@ import Axios from "@/utils/axios";
 import handleError from "@/utils/error";
 import { toast } from "react-toastify";
 import { getFeed } from "../Feed/actions";
+import routerHook from "@/utils/navigation";
 
 export const tweetChange = (name: string, value: string | string[]) => {
   let tweetData: any = {};
@@ -38,6 +39,7 @@ export const newTweet = () => {
       dispatch({ type: SET_TWEET_LOADING, payload: true });
       const response = await Axios.post("/tweet/", newTweet);
       getFeed(username);
+      routerHook().push("/");
       toast.success(`با موفقیت توییت انجام شد .`);
       dispatch({ type: TWEET_RESET });
     } catch (error) {

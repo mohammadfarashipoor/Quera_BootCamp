@@ -8,10 +8,15 @@ import { connect } from "react-redux";
 import actions from "@/lib/actions";
 import { Tweet } from "@/containers/Tweet/type";
 
-function Home(props: { feedState: { tweets: Tweet[]; username: string } }) {
+function Home(props: {
+  feedState: { tweets: Tweet[]; username: string };
+  isLoading: boolean;
+}) {
   const [page, setPage] = useState(1);
-  const { feedState } = props;
-  return (
+  const { feedState, isLoading } = props;
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div className="home">
       <NewTweetForm />
       {feedState.tweets ? (

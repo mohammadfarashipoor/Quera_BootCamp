@@ -4,13 +4,15 @@ import { connect } from "react-redux";
 import actions from "@/lib/actions";
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
+import Spinner from "@/components/Spinner";
 
 interface TweetPageProps {
   tweet: Tweet;
-  getTweet: any;
+  getTweet: (tweetId: string) => void;
+  isLoading: boolean;
 }
 function TweetPage(props: TweetPageProps) {
-  const { tweet, getTweet } = props;
+  const { tweet, getTweet, isLoading } = props;
   const { tweetId }: { tweetId: string } = useParams();
 
   useEffect(() => {
@@ -18,11 +20,16 @@ function TweetPage(props: TweetPageProps) {
       getTweet(tweetId);
     }
   }, []);
-  return tweet && <Tweet tweet={tweet} tweetId={tweetId} />;
+  return isLoading ? (
+    <Spinner />
+  ) : (
+    tweet && <Tweet tweet={tweet} tweetId={tweetId} />
+  );
 }
 const mapStateToProps = (state: any) => {
   return {
     tweet: state.tweet?.tweetState?.thread[0],
+    isLoading: state.tweet.isLoading,
   };
 };
 export default connect(mapStateToProps, actions)(TweetPage);

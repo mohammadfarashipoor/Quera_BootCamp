@@ -3,10 +3,8 @@ export interface MySigninFormData {
 }
 export interface MySigninProps {
   login: () => void;
-  loginChange: (
-    name: string,
-    value: string
-  ) => { type: string; payload: MySigninFormData };
+  isLoading: boolean;
+  loginChange: (name: string, value: string) => void;
   formErrors: { [name: string]: Object };
   loginFormData: { [name: string]: MySigninNameFormField };
 }
