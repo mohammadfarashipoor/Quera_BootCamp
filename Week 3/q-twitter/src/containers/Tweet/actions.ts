@@ -32,7 +32,6 @@ export const newTweet = () => {
       const tags = extractHashtags(newTweet.tags);
       dispatch({ type: TWEET_CHANGE_FORM, payload: { tags } });
       newTweet = getState().tweet.tweetForm;
-      const username = getState().user.userInfo;
       const { isValid, errors }: { isValid?: boolean; errors?: any } =
         allFieldsValidation(newTweet, rules, {
           "required.body": "پیام خود را وارد کنید",
@@ -42,7 +41,7 @@ export const newTweet = () => {
       }
       dispatch({ type: SET_TWEET_LOADING, payload: true });
       const response = await Axios.post("/tweet/", newTweet);
-      getFeed(username);
+      getFeed();
       routerHook().push("/");
       toast.success(`با موفقیت توییت انجام شد .`);
       dispatch({ type: TWEET_RESET });
@@ -55,8 +54,10 @@ export const newTweet = () => {
   };
 };
 export const fetchTweet = async (tweetId: string) => {
-  const res = await Axios.get(`/tweets/${tweetId}`);
-  return res.data;
+  try {
+    const res = await Axios.get(`/tweets/${tweetId}`);
+    return res.data;
+  } catch (error) {}
 };
 export const getTweet = (tweetId: string) => {
   return async (dispatch: Dispatch, getState: any) => {
@@ -77,6 +78,7 @@ export const likeTweet = (tweetId: string) => {
     try {
       await Axios.put(`/like`, { tweet_id: tweetId });
       getTweet(tweetId);
+      getFeed();
     } catch (error) {
       const title = `به نظر مشکلی پیش آمده لطفا مدتی بعد تلاش کنید`;
       handleError(error, dispatch, title);
@@ -87,8 +89,7 @@ export const deleteTweet = (tweet_id: string) => {
   return async (dispatch: Dispatch, getState: any) => {
     try {
       dispatch({ type: SET_TWEET_LOADING, payload: true });
-      await Axios.delete(`/delete_tweet`, { tweet_id });
-      getTweet(tweetId);
+      await Axios.delete(`/delete_tweet`, { data: { tweet_id } });
       routerHook().push("/");
       toast.success(`با موفقیت توییت حذف شد .`);
     } catch (error) {

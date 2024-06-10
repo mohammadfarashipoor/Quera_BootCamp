@@ -16,12 +16,14 @@ function TweetBody({
   const [originalTweet, setOriginalTweet] = useState<Tweet>();
   useEffect(() => {
     if (replyTweet) {
-      fetchTweet(replyTweet).then((res) => {
-        const tweetReplay = res.thread.find(
-          (tweet: Tweet) => tweet.id === replyTweet
-        );
-        setOriginalTweet(tweetReplay);
-      });
+      fetchTweet(replyTweet)
+        .then((res) => {
+          const tweetReplay = res.thread.find(
+            (tweet: Tweet) => tweet.id === replyTweet
+          );
+          setOriginalTweet(tweetReplay);
+        })
+        .catch((e) => console.log(e));
     }
   }, []);
   return (

@@ -3,7 +3,7 @@ import { Dispatch } from "@/lib/type";
 import Axios from "@/utils/axios";
 import handleError from "@/utils/error";
 
-export const getFeed = (username: string) => {
+export const getFeed = () => {
   return async (dispatch: Dispatch, getState: any) => {
     try {
       dispatch({ type: SET_FEED_LOADING, payload: true });
