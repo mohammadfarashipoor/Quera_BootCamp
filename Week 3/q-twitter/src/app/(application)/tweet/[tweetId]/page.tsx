@@ -22,8 +22,12 @@ function TweetPage(props: TweetPageProps) {
   }, []);
   return isLoading ? (
     <Spinner />
-  ) : (
+  ) : tweet ? (
     tweet && <Tweet tweet={tweet} tweetId={tweetId} />
+  ) : (
+    <div className="h-screen flex justify-center items-center text-white">
+      <span>توییت پیدا نشد</span>
+    </div>
   );
 }
 const mapStateToProps = (state: any) => {
