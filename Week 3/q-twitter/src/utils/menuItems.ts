@@ -40,7 +40,7 @@ const sidebarLinks = [
   },
   {
     text: "توئیت ها",
-    path: "/tweet",
+    path: "/",
     icon: "",
     class: "tweet",
   },
