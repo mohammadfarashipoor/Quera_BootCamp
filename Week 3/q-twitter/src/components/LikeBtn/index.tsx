@@ -34,10 +34,10 @@ function LikeBtn({
   }
   useEffect(() => {
     handleCheck();
-  }, [likes]);
+  }, [likes, currentUserId]);
   return isLike ? (
     <button
-      onClick={unlike}
+      onClick={(e) => unlike(e)}
       className="flex items-center tweet-btns__btn tweet-btns__like--active"
     >
       <AiFillHeart />
@@ -45,7 +45,7 @@ function LikeBtn({
     </button>
   ) : (
     <button
-      onClick={like}
+      onClick={(e) => like(e)}
       className="flex items-center tweet-btns__btn tweet-btns__like"
     >
       <AiOutlineHeart />

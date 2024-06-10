@@ -5,7 +5,7 @@ import RetweetBtn from "../RetweetBtn";
 import ReplyBtn from "../ReplyBtn";
 import { connect } from "react-redux";
 import actions from "@/lib/actions";
-import { UserData } from "@/containers/User/type";
+import { UserData, UserType } from "@/containers/User/type";
 import DeleteBtn from "../DeteleBtn";
 interface TweetIconsProps {
   reply: string | null;
@@ -13,7 +13,7 @@ interface TweetIconsProps {
   className: string;
   tweetId: string;
   currentUser: UserData;
-  tweetUser: UserData;
+  tweetUser: UserType;
   likeTweet: (tweetId: string) => void;
   deleteTweet: (tweetId: string) => void;
 }

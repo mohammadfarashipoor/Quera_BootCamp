@@ -32,7 +32,7 @@ function TweetCard({
           reply={tweet.reply}
           tweetId={tweet.id}
           tweetUser={tweet.user}
-          likes={tweet.likes}
+          likes={tweet.favorites}
           className={`${isRetweeted && "hidden"}`}
         />
       </div>

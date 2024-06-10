@@ -75,14 +75,11 @@ export const getTweet = (tweetId: string) => {
 export const likeTweet = (tweetId: string) => {
   return async (dispatch: Dispatch, getState: any) => {
     try {
-      dispatch({ type: SET_TWEET_LOADING, payload: true });
-      const response = await Axios.put(`/like`, { tweet_id: tweetId });
-      dispatch({ type: TWEET_CHANGE_STATE, payload: response.data });
+      await Axios.put(`/like`, { tweet_id: tweetId });
+      getTweet(tweetId);
     } catch (error) {
       const title = `به نظر مشکلی پیش آمده لطفا مدتی بعد تلاش کنید`;
       handleError(error, dispatch, title);
-    } finally {
-      dispatch({ type: SET_TWEET_LOADING, payload: false });
     }
   };
 };
