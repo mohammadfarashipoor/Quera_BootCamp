@@ -88,6 +88,8 @@ export const deleteTweet = (tweet_id: string) => {
     try {
       dispatch({ type: SET_TWEET_LOADING, payload: true });
       await Axios.delete(`/delete_tweet`, { tweet_id });
+      getTweet(tweetId);
+      routerHook().push("/");
       toast.success(`با موفقیت توییت حذف شد .`);
     } catch (error) {
       const title = `به نظر مشکلی پیش آمده لطفا مدتی بعد تلاش کنید`;
